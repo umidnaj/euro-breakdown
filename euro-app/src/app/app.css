@@ -1,0 +1,107 @@
+.container {
+  padding: 2rem;
+  font-family: Calibri, Arial, sans-serif;
+}
+
+h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.form {
+  margin-bottom: 1rem;
+}
+
+.amount-label {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+}
+
+.amount-label input {
+  font-size: 1.5rem;
+  padding: 0.25rem 0.5rem;
+  width: 14rem;
+  margin-left: 0.5rem;
+}
+
+.mode-toggle {
+  display: inline-block;
+  margin: 0 1rem;
+  font-size: 1.2rem;
+}
+
+.mode-toggle label {
+  margin-right: 1rem;
+}
+
+button {
+  font-size: 1.2rem;
+  padding: 0.25rem 0.75rem;
+}
+
+.error {
+  color: red;
+  margin-top: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.info {
+  margin-top: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.results {
+  display: flex;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.result-block {
+  min-width: 230px;
+}
+
+.result-block h2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 1.8rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.styled-table {
+  border-collapse: collapse;
+  min-width: 12rem;
+  font-size: 0.95rem;
+  border: 1px solid grey;
+}
+
+.styled-table th,
+.styled-table td {
+  border: 1px solid #9fb4d9;
+  padding: 0.3rem 0.6rem;
+}
+
+.styled-table thead th {
+  background-color: #4f81bd;
+  color: #ffffff;
+  font-weight: 700;
+  text-align: center;
+}
+
+.styled-table tbody tr:nth-child(odd) {
+  background-color: #dbe5f1;
+}
+
+.styled-table tbody tr:nth-child(even) {
+  background-color: #f2f5fb;
+}
+
+.styled-table tbody td {
+  text-align: right;
+}
+
+.styled-table thead th:first-child,
+.styled-table tbody td:first-child {
+  text-align: center;
+}

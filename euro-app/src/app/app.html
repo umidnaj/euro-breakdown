@@ -1,0 +1,88 @@
+<div class="container">
+  <h1>Euro-Stückelung</h1>
+
+  <form (ngSubmit)="onCalculate()" class="form">
+    <label for="amount" class="amount-label">
+      Betrag (€):
+      <input id="amount" name="amount" [(ngModel)]="amount" required />
+    </label>
+
+    <div class="mode-toggle">
+      <label>
+        <input type="radio" name="mode" value="frontend" [(ngModel)]="mode" />
+        Frontend-Berechnung
+      </label>
+      <label>
+        <input type="radio" name="mode" value="backend" [(ngModel)]="mode" />
+        Backend-Berechnung
+      </label>
+    </div>
+
+    <button type="submit">Berechnen</button>
+  </form>
+
+  <div *ngIf="loading" class="info">
+    Berechnung läuft …
+  </div>
+
+  <div *ngIf="error" class="error">
+    {{ error }}
+  </div>
+
+  <div class="results" *ngIf="current as cb">
+    <div class="result-block">
+      <h2>
+        <span>Neue Stückelung&nbsp;</span>
+        <span *ngIf="currentAmountLabel">
+          {{ formatAmount(currentAmountLabel) }} €
+        </span>
+      </h2>
+
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th>Schein/Münze</th>
+            <th>Anzahl</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container
+            *ngFor="let entry of cb | keyvalue : compareDenominations"
+          >
+            <tr *ngIf="entry.value !== 0">
+              <td>{{ formatDenomination(entry.key) }}</td>
+              <td>{{ entry.value }}</td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Differenz -->
+    <div class="result-block" *ngIf="previous && diff as d">
+      <h2>
+        <span>Dif­ferenz zu&nbsp;</span>
+        <span *ngIf="previousAmountLabel">
+          {{ formatAmount(previousAmountLabel) }} €
+        </span>
+      </h2>
+
+      <table class="styled-table">
+        <thead>
+          <tr>
+            <th>Schein/Münze</th>
+            <th>Differenz</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let entry of d | keyvalue : compareDenominations">
+            <td>{{ formatDenomination(entry.key) }}</td>
+            <td>
+              {{ entry.value > 0 ? ('+' + entry.value) : entry.value }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
